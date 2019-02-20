@@ -1,5 +1,12 @@
 version: '3.1'
 services:
+  config_service:
+    container_name: config_service
+    build: ./config-service
+    environment:
+      SPRING_CLOUD_CONFIG_SERVER_GIT_URI: 'https://github.com/jandebora/spring-boot-git-config'
+    ports:
+      - 8888:8080
   db:
     container_name: mysql
     image: mysql
