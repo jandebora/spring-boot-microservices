@@ -14,6 +14,22 @@ services:
     image: jandebora/eureka-admin-service:2.1.3
     ports:
       - 8761:8761
+  api-gateway:
+    container_name: api-gateway
+    build: ./api-gateway
+    image: jandebora/api-gateway:0.0.1
+    environment:
+      SPRING_CLOUD_CONFIG_ENABLED: 'true'
+      SPRING_APPLICATION_NAME: api-gateway
+      SPRING_PROFILES_ACTIVE: master
+      SPRING_CLOUD_CONFIG_LABEL: master
+      SPRING_CLOUD_CONFIG_FAIL-FAST: 'true'
+      SPRING_CLOUD_CONFIG_URI: 'http://config-service:8080'
+    depends_on:
+      - config-service
+      - eureka-admin-service
+    ports:
+      - 80:8080
   users:
     container_name: users
     build: ./users-microservice
