@@ -19,7 +19,7 @@ services:
     build: ./users-microservice
     image: jandebora/users-microservice:0.0.1
     environment:
-    SPRING_CLOUD_CONFIG_ENABLED: 'true'
+      SPRING_CLOUD_CONFIG_ENABLED: 'true'
       SPRING_APPLICATION_NAME: users
       SPRING_PROFILES_ACTIVE: master
       SPRING_CLOUD_CONFIG_LABEL: master
