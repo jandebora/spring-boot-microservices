@@ -1,0 +1,15 @@
+
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    cliente:
+      path: /users/**
+      serviceId: users
+      stripPrefix: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

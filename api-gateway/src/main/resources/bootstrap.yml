@@ -1,0 +1,18 @@
+# Mandatory properties
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: local
+  cloud:
+    config:
+      enabled: false
+  #    label: master # (git) master is default branch, so this is redundant
+  #    fail-fast: true
+  #    uri: http://config_service:8888
+
+# This configuration search the file 'users-master.yml' in the config-server
+# ===============
+# Otherwise you will need a file:
+# src/main/resources/application-${spring.profiles.active}.yml
+# ======================
