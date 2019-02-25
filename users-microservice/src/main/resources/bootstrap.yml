@@ -4,11 +4,12 @@ spring:
     name: users
   profiles:
     active: local
-  #cloud:
-  #  config:
-  #    label: master # (git) master is default branch, so this is redundant
-  #    fail-fast: true
-  #    uri: http://config_service:8888
+  cloud:
+    config:
+      enabled: false
+#      label: master # (git) master is default branch, so this is redundant
+#      fail-fast: true
+#      uri: http://config-service:8888
 
 # This configuration search the file 'users-master.yml' in the config-server
 # ===============
