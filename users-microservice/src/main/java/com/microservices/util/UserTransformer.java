@@ -17,7 +17,7 @@ public class UserTransformer implements CustomTransformer<User, UserDto> {
 	@Override
 	public User dtoToEntity(UserDto dto) {
 		return new User(dto.getId(), dto.getEmail(),
-				dto.getName(), dto.getSurname());
+				dto.getName(), dto.getSurname(), null, null);
 	}
 
 }
