@@ -47,6 +47,23 @@ services:
       - eureka-admin-service
     ports:
       - 8080
+  cards:
+    container_name: cards
+    build: ./cards-microservice
+    image: jandebora/cards-microservice:0.0.1
+    environment:
+      SPRING_CLOUD_CONFIG_ENABLED: 'true'
+      SPRING_APPLICATION_NAME: cards
+      SPRING_PROFILES_ACTIVE: master
+      SPRING_CLOUD_CONFIG_LABEL: master
+      SPRING_CLOUD_CONFIG_FAIL-FAST: 'true'
+      SPRING_CLOUD_CONFIG_URI: 'http://config-service:8080'
+    depends_on:
+      - config-service
+      - db
+      - eureka-admin-service
+    ports:
+      - 8080
   db:
     container_name: mysql
     image: mysql:8
