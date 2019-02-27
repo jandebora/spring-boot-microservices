@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.dto.CardDto;
@@ -25,9 +26,11 @@ public class CardController {
 	private CardService cardService;
 	
 	@GetMapping
-	public ResponseEntity<CardDtoCollection> getAllCards() {
+	public ResponseEntity<CardDtoCollection> getCardsCollection(
+			@RequestParam(required = false) Long userId) {
 		
-		return ResponseEntity.ok(cardService.getAllCards());
+		return userId == null ? ResponseEntity.ok(cardService.getAllCards()) : 
+			ResponseEntity.ok(cardService.getUserCards(userId));
 	}
 	
 	@GetMapping("/{id}")

@@ -8,6 +8,7 @@ public interface CardService {
 
 	public CardDto getCard(Long id);
 	public CardDtoCollection getAllCards();
+	public CardDtoCollection getUserCards(Long idUser);
 	public CardDto addCard(CardDto cardDto) throws CardException;
 	public CardDto updateCard(CardDto cardDto) throws CardException;
 	public void deleteCard (Long id);

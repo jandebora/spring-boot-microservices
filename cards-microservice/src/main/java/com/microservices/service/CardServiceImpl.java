@@ -65,4 +65,13 @@ public class CardServiceImpl implements CardService {
 		cardRepository.deleteById(id);
 	}
 
+	@Override
+	public CardDtoCollection getUserCards(Long idUser) {
+		Collection<Card> cards = cardRepository.findByUserId(idUser);
+		
+		return new CardDtoCollection(cards.stream()
+				.map(card -> cardTransformer.entityToDto(card))
+				.collect(Collectors.toList()));
+	}
+
 }
