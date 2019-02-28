@@ -22,3 +22,15 @@ management:
     web:
       exposure:
         include: '*'
+        
+swagger:
+  api-version: 1.0
+  title: Card API
+  description: Documentation Card API v${swagger.api-version}
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /cards/v2/api-docs
+        

@@ -10,3 +10,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+swagger:
+  api-version: 1.0
+  title: User API
+  description: Documentation User API v${swagger.api-version}
