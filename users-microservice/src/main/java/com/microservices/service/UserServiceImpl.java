@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservices.domain.User;
+import com.microservices.dto.UserCardCollectionDto;
 import com.microservices.dto.UserDto;
 import com.microservices.dto.UserDtoCollection;
 import com.microservices.repository.UserRepository;
+import com.microservices.service.http.CardService;
 import com.microservices.util.UserTransformer;
 
 @Service
@@ -23,12 +25,23 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserTransformer userTransformer;
+	
+	@Autowired
+	private CardService cardService;
 
 	@Override
 	public UserDto getUser(Long id) {
 		User user = userRepository.getOne(id);
 		
 		return userTransformer.entityToDto(user);
+	}
+	
+	@Override
+	public UserCardCollectionDto getUserAndCards(Long id) {
+		UserDto userDto = getUser(id);
+		
+		return new UserCardCollectionDto(userDto, 
+				cardService.getUserCards(id).getBody().getCards());
 	}
 
 	@Override

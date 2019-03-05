@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservices.dto.UserCardCollectionDto;
 import com.microservices.dto.UserDto;
 import com.microservices.dto.UserDtoCollection;
 import com.microservices.service.UserService;
@@ -30,8 +31,8 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
-		UserDto user = userService.getUser(id);
+	public ResponseEntity<UserCardCollectionDto> getUser(@PathVariable Long id) {
+		UserCardCollectionDto user = userService.getUserAndCards(id);
 		
 		return ResponseEntity.ok(user);
 	}

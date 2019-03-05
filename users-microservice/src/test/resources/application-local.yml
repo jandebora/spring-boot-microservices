@@ -11,6 +11,10 @@ spring:
     hibernate:
       ddl-auto: none
 
+feign:
+  hystrix:
+    enabled: true
+
 swagger:
   api-version: 1.0
   title: User API
